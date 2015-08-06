@@ -1,4 +1,6 @@
 node_modules
 bower_components
+npm-debug.log
 demo/node_modules
 demo/bower_components
+demo/npm-debug.log
