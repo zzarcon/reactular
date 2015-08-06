@@ -1,4 +1,6 @@
-(function(root) {
+import exportable from "exportable";
+
+var Reactular = function() {
   function render(component, props, element) {
     return React.render(React.createElement(component, props), element);
   }
@@ -37,9 +39,14 @@
     return directive;
   };
 
-  //TODO: export supporting AMD and CommonJS
-  root.Reactular = {
+  return {
     render: render,
     directive: directive
   };
-})(window);
+};
+
+exportable({
+  module: module,
+  name: 'Reactular',
+  definition: Reactular
+});
