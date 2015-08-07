@@ -1,12 +1,13 @@
 import exportable from "exportable";
 
-var Reactular = function() {
-  function render(component, props, element) {
-    return React.render(React.createElement(component, props), element);
-  }
+function render(component, props, element) {
+  return React.render(React.createElement(component, props), element);
+}
 
-  function directive(component, params) {
-    var props = params.props;
+function directive() {
+  return function(component, params = {}) {
+
+    var props = params.props || {};
     var scope = null;
 
     props.onStateChange = function() {
@@ -32,17 +33,17 @@ var Reactular = function() {
       },
       controller: function($scope) {
         scope = $scope;
-        params.controller.apply(this, arguments);
+        //TODO: ?¿
+        // params.controller.apply(this, arguments);
       }
     };
 
     return directive;
-  };
+  }
+};
 
-  return {
-    render: render,
-    directive: directive
-  };
+var Reactular = function() {
+  return angular.module('reactular', []).factory('reactularDirective', [directive]);
 };
 
 exportable({

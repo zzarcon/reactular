@@ -14,5 +14,9 @@
     "test",
     "tests"
   ],
-  "dependencies": {}
+  "devDependencies": {
+    "angular": "1.4.3",
+    "react": "0.13.3",
+    "ngReact": "0.1.7"
+  }
 }
